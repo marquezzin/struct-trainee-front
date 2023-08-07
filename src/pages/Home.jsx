@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 export function Home(){
     return (
         <section className="flex flex-col">
@@ -9,15 +11,17 @@ export function Home(){
                 </select>
                 <button className="mx-5">top</button>
                 <button className="mx-5">recent</button>
-                <button className="px-5 py-0.5 mx-5 rounded bg-purple-600 text-2xl">post</button>
+                <Link to="/post" className="px-5 py-0.5 mx-5 rounded bg-purple-600 text-2xl">post</Link>
             </div>
+
             <div className="self-center">
                 <h1>POSTS</h1>
                 <h1>POSTS</h1>
                 <h1>POSTS</h1>
             </div>
+
             <div className="self-center m-5">
-                <button className="px-5 py-0.5 mx-5 rounded bg-purple-600 text-2xl">more</button>
+                <button className="px-4 py-0.5 mx-5 rounded bg-purple-600 text-xl">more</button>
             </div>
         </section>
     )

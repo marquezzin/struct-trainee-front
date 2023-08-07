@@ -1,6 +1,7 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { Home } from "./pages/Home.jsx";
 import { Root } from "./pages/Root.jsx";
+import { Post } from "./pages/posts/Post.jsx";
 import { Login } from "./pages/user/Login.jsx";
 import { Profile } from "./pages/user/Profile.jsx";
 import { Signup } from "./pages/user/Singup.jsx";
@@ -11,34 +12,24 @@ const router = createBrowserRouter([
     element: <Root/>,
     children: [
       {
-        path: "",
+        path: "/",
         element: <Home/>
       },
       {
         path: "user",
-        element: <Profile/>,
-        children: [
-          {
-            path: "login",
-            element: <Login/>
-          },
-          {
-            path: "signup",
-            element: <Signup/>
-          },
-        ],
+        element: <Profile/>
       },
       {
-        path: "login",
+        path: "/user/login",
         element: <Login/>
       },
       {
-        path: "signup",
+        path: "/user/signup",
         element: <Signup/>
       },
       {
-        path: "profile",
-        element: <Profile/>,
+        path: "post",
+        element: <Post/>,
       },
     ]
   },
