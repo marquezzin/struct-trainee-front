@@ -9,8 +9,6 @@ export function Home(){
                     <option>Cat 2</option>
                     <option>Cat 3</option>
                 </select>
-                <button className="mx-5">top</button>
-                <button className="mx-5">recent</button>
                 <Link to="/post" className="px-5 py-0.5 mx-5 rounded bg-purple-600 text-2xl">post</Link>
             </div>
 
