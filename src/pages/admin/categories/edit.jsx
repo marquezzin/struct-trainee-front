@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { api } from "../../../utils/api";
 
 export function AdminEditCategoriesPage() {
@@ -51,13 +51,11 @@ export function AdminEditCategoriesPage() {
   }
 
   return (
-    <section className="">
-      <h1 className="self-center text-2xl m-5">Edit Category</h1>
-      <form onSubmit={handleSubmit} className="self-center m-5">
-        <div className="my-5 w-96">
-          <label className="text-xl" htmlFor="inp1">
-            Name:
-          </label>
+    <section className="flex flex-col">
+      <h1 className="self-center text-3xl m-5">Edit Category</h1>
+      <form onSubmit={handleSubmit} className="flex flex-col self-center mx-5">
+        <div className="my-5 w-96 flex flex-col">
+          <label className="text-2xl self-center" htmlFor="inp1">Name:</label>
           <input
             type="text"
             value={category.name}
@@ -66,7 +64,7 @@ export function AdminEditCategoriesPage() {
             id="inp1"
           />
         </div>
-        <button className="bg-purple-600 rounded text-xl px-4 py-1">Update</button>
+        <button className="bg-purple-600 rounded text-xl px-4 py-1 self-center">Update</button>
       </form>
     </section>
   );
