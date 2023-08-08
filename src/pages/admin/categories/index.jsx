@@ -4,33 +4,59 @@ import { api } from "../../../utils/api.js";
 
 export function AdminIndexCategoriesPage() {
     const [categories, setCategories] = useState([]);
+    const [updates, setUpdates] = useState(0);
+
+    function forceUpdateIndex() {
+        setUpdates(updates + 1);
+    }
 
     useEffect(() => {
-        api.get("categories/index").then((res) => { setCategories(res.data); }).catch((err) => alert("error"));
-    }, []);
+        api.get("categories/index")
+            .then((res) => { setCategories(res.data); })
+            .catch((err) => alert("Error fetching categories."));
+    }, [updates]);
 
     return (
         <div>
             <h1 className="m-5 text-3xl">Categories:</h1>
-            <table className="m-5 w-96">
-                <thead className="text-left">
-                    <tr className="text-2xl">
-                        <th className="">Id</th>
-                        <th className="">Name</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {categories.map((cat) => { 
-                        return(
-                            <tr key={cat.id} className="text-xl">
-                                <td>{cat.id}</td>
-                                <td>{cat.name}</td>
+            <div className="flex">
+                <div className="max-w-md">
+                    <table className="m-5 border-collapse">
+                        <thead className="text-left">
+                            <tr className="text-xl bg-gray-100">
+                                <th className="p-2">Id</th>
+                                <th className="p-2">Name</th>
+                                <th className="p-2">Actions</th>
                             </tr>
-                        ); 
-                    })}
-                </tbody>
-            </table>
-            <Link className="text-xl text-purple-600 m-4" to="/categories/create">Create new</Link>
+                        </thead>
+                        <tbody>
+                            {categories.map((cat) => (
+                                <tr key={cat.id} className="text-lg">
+                                    <td className="p-2 border">{cat.id}</td>
+                                    <td className="p-2 border">{cat.name}</td>
+                                    <td className="p-2 border flex items-center space-x-2">
+                                        <Link to={`/categories/update/${cat.id}`} className="text-blue-500">Edit</Link>
+                                        <button className="text-red-500" onClick={() => {
+                                            if (window.confirm(`Do you really want to delete the category: ${cat.name}?`)) {
+                                                api.delete(`categories/delete/${cat.id}`)
+                                                    .then(() => {
+                                                        alert(`Category ${cat.name} has been deleted.`);
+                                                        forceUpdateIndex();
+                                                    })
+                                                    .catch(() => alert("An unexpected error occurred while deleting."));
+                                            }
+                                        }}>Delete</button>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+                <div className="flex flex-col justify-center">
+                    <Link className="text-lg text-purple-600 m-4" to="/categories/create">Create new</Link>
+                </div>
+            </div>
         </div>
-    )
+    );
 }
+

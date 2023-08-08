@@ -4,7 +4,7 @@ export function Profile() {
     return (
         <section className="flex flex-col">
             <div className="self-center flex flex-col m-4">
-                <img className="m-1 w-32 h-32" src="../../../public/H.png"></img>
+                <img className="m-1 w-32 h-32" src="../../../H.png"></img>
                 <button className="text-purple-600 mx-2 text-sm">edit profile picture</button>
             </div>
             <div className="self-center flex m-5">

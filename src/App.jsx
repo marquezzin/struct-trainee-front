@@ -43,7 +43,7 @@ const router = createBrowserRouter([
         element: <AdminCreateCategoriesPage/>,
       },
       {
-        path: "categories/create",
+        path: "categories/update/:id",
         element: <AdminEditCategoriesPage/>,
       },
     ]
@@ -51,7 +51,7 @@ const router = createBrowserRouter([
 ])
 
 function App() {
-  
+
   return (
     <RouterProvider router={router}/>
   )
