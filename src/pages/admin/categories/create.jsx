@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { api } from "../../../utils/api";
 import { useNavigate } from "react-router-dom";
+import { api } from "../../../utils/api";
 
 export function AdminCreateCategoriesPage() {
     const navigate = useNavigate()
@@ -41,14 +41,14 @@ export function AdminCreateCategoriesPage() {
     }
 
     return (
-      <section className="">
-        <h1 className="self-center text-2xl m-5">Create a new Category</h1>
-        <form onSubmit={handleSubmit} className="self-center m-5">
-            <div className="my-5 w-96">
-                <label className="text-xl" htmlFor="inp1">Name:</label>
+      <section className="flex flex-col">
+        <h1 className="self-center text-3xl m-5">Create a new Category</h1>
+        <form onSubmit={handleSubmit} className="flex flex-col self-center mx-5">
+            <div className="my-5 w-96 flex flex-col">
+                <label className="text-xl self-center" htmlFor="inp1">Name:</label>
                 <input type="text" value={category.name} onChange={(e) => handleChange("name", e.target.value)} className="bg-gray-500 rounded text-xl mx-2 text-yellow-50" id="inp1"/>
             </div>
-            <button className="bg-purple-600 rounded text-xl px-4 py-1">Create</button>
+            <button className="self-center bg-purple-600 rounded text-xl px-4 py-1">Create</button>
         </form>
       </section>
     )
