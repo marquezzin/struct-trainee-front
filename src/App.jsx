@@ -1,6 +1,9 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { Home } from "./pages/Home.jsx";
 import { Root } from "./pages/Root.jsx";
+import { AdminCreateCategoriesPage } from "./pages/admin/categories/create.jsx";
+import { AdminEditCategoriesPage } from "./pages/admin/categories/edit.jsx";
+import { AdminIndexCategoriesPage } from "./pages/admin/categories/index.jsx";
 import { Post } from "./pages/posts/Post.jsx";
 import { Login } from "./pages/user/Login.jsx";
 import { Profile } from "./pages/user/Profile.jsx";
@@ -30,6 +33,18 @@ const router = createBrowserRouter([
       {
         path: "post",
         element: <Post/>,
+      },
+      {
+        path: "categories",
+        element: <AdminIndexCategoriesPage/>,
+      },
+      {
+        path: "categories/create",
+        element: <AdminCreateCategoriesPage/>,
+      },
+      {
+        path: "categories/create",
+        element: <AdminEditCategoriesPage/>,
       },
     ]
   },
