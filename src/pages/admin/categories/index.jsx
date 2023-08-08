@@ -17,11 +17,11 @@ export function AdminIndexCategoriesPage() {
     }, [updates]);
 
     return (
-        <div>
-            <h1 className="m-5 text-3xl">Categories:</h1>
-            <div className="flex">
+        <div className="flex flex-col">
+            <h1 className="mx-5 my-3 text-3xl self-center">Categories:</h1>
+            <div className="self-center">
                 <div className="max-w-md">
-                    <table className="m-5 border-collapse">
+                    <table className="mx-5 my-2 border-collapse">
                         <thead className="text-left">
                             <tr className="text-xl bg-gray-100">
                                 <th className="p-2">Id</th>
@@ -53,7 +53,7 @@ export function AdminIndexCategoriesPage() {
                     </table>
                 </div>
                 <div className="flex flex-col justify-center">
-                    <Link className="text-lg text-purple-600 m-4" to="/categories/create">Create new</Link>
+                    <Link className="text-lg text-purple-600 m-5 self-center" to="/categories/create">Create new</Link>
                 </div>
             </div>
         </div>
