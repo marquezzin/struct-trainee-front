@@ -24,6 +24,7 @@ export function Login() {
                 navigate('/categories'); // Redirecionar apenas se for administrador.
             } else {
                 alert("Successfully logged in");
+                navigate('/auth')
             }
         })
         .catch((err) => {
@@ -33,7 +34,7 @@ export function Login() {
 
     return (
         <section className="flex flex-col">
-            <h1 className="self-center m-6 text-4xl">login</h1>
+            <h1 className="self-center m-6 text-2xl text-black" >WELCOME!</h1>
             <form className="flex flex-col items-center" onSubmit={handlesubmit}>
                 <input type="email" placeholder="email" value={email} onChange={(ev) => {
                     setEmail(ev.target.value);
@@ -43,7 +44,7 @@ export function Login() {
                     setPassword(ev.target.value);
                 }}  className="outline-none bg-white rounded my-1 px-1 text-black text-xl h-8 w-80"></input>
 
-                <button type="submit" className="my-2 px-4 py-1 rounded bg-purple-700 text-xl">submit</button>
+                <button type="submit" className="my-2 px-4 py-1  text-black rounded-2xl bg-white text-xl">SUBMIT</button>
             </form>
         </section>
     );
