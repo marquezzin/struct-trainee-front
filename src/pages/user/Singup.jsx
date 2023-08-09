@@ -7,27 +7,27 @@ export function Signup() {
 
     return (
         <section className="flex flex-col">
-            <h1 className="self-center m-6 text-4xl">create account</h1>
+            <h1 className="self-center m-6 text-3xl text-black">CREATE ACCOUNT</h1>
             <form className="flex flex-col items-center" onSubmit={(e) => {
                 e.preventDefault();
             }}>
-                <input type="username" placeholder="username" value={username} onChange={(e) => {
+                <input type="username" placeholder="USERNAME" value={username} onChange={(e) => {
                     setUsername(e.target.value);
                 }} className="outline-none bg-white rounded my-1 px-1 text-black text-xl h-8 w-80"></input>
 
-                <input type="email" placeholder="email" value={email} onChange={(e) => {
+                <input type="email" placeholder="EMAIL" value={email} onChange={(e) => {
                     setEmail(e.target.value);
                 }} className="outline-none bg-white rounded my-1 px-1 text-black text-xl h-8 w-80"></input>
 
-                <input type="password" placeholder="password" value={password} onChange={(e) => {
+                <input type="password" placeholder="PASSWORD" value={password} onChange={(e) => {
                     setPassword(e.target.value);
                 }}  className="outline-none bg-white rounded my-1 px-1 text-black text-xl h-8 w-80"></input>
 
-                <input type="password" placeholder="password confirmation" value={password} onChange={(e) => {
+                <input type="password" placeholder="PASSWORD CONFIRMATION" value={password} onChange={(e) => {
                     setPassword(e.target.value);
                 }}  className="outline-none bg-white rounded my-1 px-1 text-black text-xl h-8 w-80"></input>
-                
-                <button type="submit" className="my-2 px-4 py-1 rounded bg-purple-700 text-xl">submit</button>
+
+                <button type="submit" className="my-2 px-4 py-1  text-black rounded-2xl bg-white text-xl">SUBMIT</button>
             </form>
         </section>
     );
