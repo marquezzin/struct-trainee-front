@@ -27,7 +27,7 @@ export function Signup() {
                     setPassword(e.target.value);
                 }}  className="outline-none bg-white rounded my-1 px-1 text-black text-xl h-8 w-80"></input>
                 
-                <button type="submit" className="my-2 px-4 py-1 rounded bg-purple-600 text-xl">submit</button>
+                <button type="submit" className="my-2 px-4 py-1 rounded bg-purple-700 text-xl">submit</button>
             </form>
         </section>
     );

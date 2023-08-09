@@ -48,7 +48,7 @@ export function AdminCreateCategoriesPage() {
                 <label className="text-xl self-center" htmlFor="inp1">Name:</label>
                 <input type="text" value={category.name} onChange={(e) => handleChange("name", e.target.value)} className="bg-gray-500 rounded text-xl mx-2 text-yellow-50" id="inp1"/>
             </div>
-            <button className="self-center bg-purple-600 rounded text-xl px-4 py-1">Create</button>
+            <button className="self-center bg-purple-700 rounded text-xl px-4 py-1">Create</button>
         </form>
       </section>
     )

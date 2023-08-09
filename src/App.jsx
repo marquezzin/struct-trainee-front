@@ -5,7 +5,8 @@ import { Root } from "./pages/Root.jsx";
 import { AdminCreateCategoriesPage } from "./pages/admin/categories/create.jsx";
 import { AdminEditCategoriesPage } from "./pages/admin/categories/edit.jsx";
 import { AdminIndexCategoriesPage } from "./pages/admin/categories/index.jsx";
-import { Post } from "./pages/posts/Post.jsx";
+import { CreatePost } from "./pages/posts/CreatePost.jsx";
+import { PostPage } from "./pages/posts/PostPage.jsx";
 import { Login } from "./pages/user/Login.jsx";
 import { Profile } from "./pages/user/Profile.jsx";
 import { Signup } from "./pages/user/Singup.jsx";
@@ -33,8 +34,8 @@ const router = createBrowserRouter([
         element: <Signup/>
       },
       {
-        path: "post",
-        element: <Post/>,
+        path: "createpost",
+        element: <CreatePost/>,
       },
       {
         path: "categories",
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
       {
         path: "categories/update/:id",
         element: <AdminEditCategoriesPage/>,
+      },
+      {
+        path: "post/:id",
+        element: <PostPage/>
       },
     ]
   },

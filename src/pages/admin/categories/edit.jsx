@@ -64,7 +64,7 @@ export function AdminEditCategoriesPage() {
             id="inp1"
           />
         </div>
-        <button className="bg-purple-600 rounded text-xl px-4 py-1 self-center">Update</button>
+        <button className="bg-purple-700 rounded text-xl px-4 py-1 self-center">Update</button>
       </form>
     </section>
   );

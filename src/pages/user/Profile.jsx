@@ -18,8 +18,8 @@ export function Profile() {
                 <button className="text-purple-600 text-sm">edit bio</button>
             </div>
             <div className="self-center py-5">
-                <Link to="/user/login" className="px-4 py-1 mx-5 rounded bg-purple-600 text-xl">login</Link>
-                <Link to="/user/signup" className="px-4 py-1 mx-5 rounded bg-purple-600 text-xl">signup</Link>
+                <Link to="/user/login" className="px-4 py-1 mx-5 rounded bg-purple-700 text-xl">login</Link>
+                <Link to="/user/signup" className="px-4 py-1 mx-5 rounded bg-purple-700 text-xl">signup</Link>
             </div>
         </section>
     )
