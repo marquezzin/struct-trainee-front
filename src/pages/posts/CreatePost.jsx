@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
-import { api } from "../../utils/api";
 import { useNavigate } from "react-router-dom";
+import { useUserContext } from "../../utils/UserContext";
+import { api } from "../../utils/api";
 
 export function CreatePost(){
+    const {user} = useUserContext()
     const navigate=useNavigate()
     const [categories, setCategories] = useState([]);
     const [formData, setFormData] = useState({
@@ -23,10 +25,15 @@ export function CreatePost(){
     }
     function handleSubmit(event) {
         event.preventDefault();
+        console.log(formData)
+        console.log(user)
         api.post("posts/create", {
-            title: formData.title,
-            content: formData.content,
-            category_id: formData.categoryId // Envie a categoria selecionada
+            params:{post:{
+                title: formData.title,
+                content: formData.content,
+                category_id: formData.categoryId,
+                user_id: user.id
+            }}
         }).then(() => {
             alert("Post created successfully");
             navigate("/")
@@ -59,14 +66,14 @@ export function CreatePost(){
             <div className="self-center w-96 mb-4">
                 <h1 className="text-xl">Title:</h1>
                 <form>
-                    <textarea type="text" className="border-solid border-white border w-96 h-24 text-lg" maxLength={130}></textarea>
+                    <textarea value={formData.title} onChange={handleTitleChange} type="text" className="border-solid border-white border w-96 h-24 text-lg" maxLength={130}></textarea>
                 </form>
             </div>
 
             <div className="self-center w-96 mb-4">
                 <h1 className="text-xl">Content:</h1>
                 <form>
-                    <textarea type="text" className="border-solid border-white border w-96 h-80" maxLength={600}></textarea>
+                    <textarea value={formData.content} onChange={handleContentChange} type="text" className="border-solid border-white border w-96 h-80" maxLength={600}></textarea>
                 </form>
             </div>
 

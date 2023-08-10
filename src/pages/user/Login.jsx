@@ -5,7 +5,7 @@ export function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const { user, login } = useUserContext();
-    // console.log(user)
+    console.log(user)
     
     const handlesubmit = (ev) => {
         ev.preventDefault()
