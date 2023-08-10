@@ -43,13 +43,13 @@ export function AdminCreateCategoriesPage() {
 
     return (
       <section className="flex flex-col">
-        <h1 className="self-center text-3xl m-5">Create a new Category</h1>
+        <h1 className="self-center text-3xl m-7">Create a new Category</h1>
         <form onSubmit={handleSubmit} className="flex flex-col self-center mx-5">
             <div className="my-5 w-96 flex flex-col">
                 <label className="text-xl self-center" htmlFor="inp1">Name:</label>
-                <input type="text" value={category.name} onChange={(e) => handleChange("name", e.target.value)} className="bg-gray-500 rounded text-xl mx-2 text-yellow-50" id="inp1"/>
+                <input type="text" value={category.name} onChange={(e) => handleChange("name", e.target.value)} className="bg-white rounded text-xl mx-2 text-black px-2" id="inp1"/>
             </div>
-            <button className="self-center  bg-white rounded text-xl px-4 py-1">Create</button>
+            <button className="self-center bg-gray-100 rounded text-xl px-4 py-1">CREATE</button>
         </form>
       </section>
     )
