@@ -33,7 +33,8 @@ export function AdminCreateCategoriesPage() {
                 navigate ('/categories')/* ir para página de categorias após criar uma */
 
             }).catch((err) => {
-                alert("Error creating category");
+                console.error("Error creating category:", err);
+                alert("Error creating category: " + err.message)
             });
         } else {
             alert(message);

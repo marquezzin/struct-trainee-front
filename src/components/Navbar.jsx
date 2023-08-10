@@ -11,6 +11,7 @@ export function Navbar() {
             {user ? <></> : <Link to="/user/signup" className="px-4 py-1 mx-8 rounded bg-white text-3xl">SIGNUP</Link>}
             {user ? <Link to={`/user/dados`} className="px-4 py-1 mx-8 rounded bg-white text-3xl">PROFILE</Link> : <></>}
             {user ? <button onClick={logout} className="px-4 py-1 mx-8 rounded bg-white text-3xl">LOGOUT</button> : <></>}
+            {user && user.is_admin ? <Link to={`/categories`} className="px-4 py-1 mx-8 rounded bg-white text-3xl">CATEGORIES</Link> : <></>}
         </nav>
     )
 }
