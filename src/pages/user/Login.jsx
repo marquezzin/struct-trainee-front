@@ -1,35 +1,22 @@
 import { useState } from "react";
-import { api } from "../../utils/api";
-import { useNavigate } from "react-router-dom";
-
-
+import { useUserContext } from "../../utils/UserContext";
 
 export function Login() {
-    const navigate=useNavigate()
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
-    const [user, setUser] = useState(null)
-
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const { user, login } = useUserContext();
+    // console.log(user)
+    
     const handlesubmit = (ev) => {
         ev.preventDefault()
         if(!email || !password){
             alert("preencha os campos")
             return
         }
-        api.post("users/login",{email,password})
-        .then((res)=>{
-            console.log(res.data)
-            if (res.data.is_admin) {
-                alert("Successfully logged in as admin");
-                navigate('/categories'); // Redirecionar apenas se for administrador.
-            } else {
-                alert("Successfully logged in");
-                navigate('/auth')
-            }
-        })
-        .catch((err) => {
+        
+        login({ email, password}).catch((err) => {
             alert("Login error ");
-            });
+        });
     }
 
     return (
