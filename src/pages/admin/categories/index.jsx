@@ -18,10 +18,10 @@ export function AdminIndexCategoriesPage() {
 
     return (
         <div className="flex flex-col">
-            <h1 className="mx-5 my-3 text-2xl self-center text-black">CATEGORIES:</h1>
+            <h1 className="mx-5 my-5 text-3xl self-center text-black">CATEGORIES:</h1>
             <div className="self-center">
                 <div className="max-w-md">
-                    <table className="mx-5 my-2 border-collapse ">
+                    <table className="mx-5 border-collapse">
                         <thead className="text-left">
                             <tr className="text-xl ">
                                 <th className="p-2 border-black text-black">Id</th>
@@ -35,7 +35,7 @@ export function AdminIndexCategoriesPage() {
                                     <td className="p-2 border border-black text-black">{cat.id}</td>
                                     <td className="p-2 border border-black text-black">{cat.name}</td>
                                     <td className="p-2 border border-black flex items-center space-x-2">
-                                        <Link to={`/categories/update/${cat.id}`} className="text-gray-600">EDIT</Link>
+                                        <Link to={`/categories/update/${cat.id}`} className="text-gray-800">EDIT</Link>
                                         <button className="text-red-500" onClick={() => {
                                             if (window.confirm(`Do you really want to delete the category: ${cat.name}?`)) {
                                                 api.delete(`categories/delete/${cat.id}`)
@@ -53,7 +53,7 @@ export function AdminIndexCategoriesPage() {
                     </table>
                 </div>
                 <div className="flex flex-col justify-center">
-                    <Link className="bg-white text-black text-xl rounded-2xl px-4 py-1 m-5 self-center" to="/categories/create">Create new</Link>
+                    <Link className="bg-white text-black text-xl rounded-xl px-4 py-1 m-5 self-center" to="/categories/create">Create new</Link>
                 </div>
             </div>
         </div>

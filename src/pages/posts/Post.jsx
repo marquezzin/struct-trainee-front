@@ -34,15 +34,15 @@ export function Post({ catId }) {
 
     if(catId == "all"){
         return (
-            <div className="flex flex-col">
+            <div className="grid grid-cols-2 w-[70rem]">
                 {posts.map((post) => (
-                    <div className="self-center flex m-3" key={post.id}>
+                    <div className="m-3" key={post.id}>
                         <Link to={`/post/${post.id}`}>
                             <div className="flex border-b border-green-800 border-opacity-30">
                                 <div className="self-center flex text-sm">
-                                    <p className="mx-2">@{ post.user.name }  -</p>
+                                    <p className="mx-3">@{ post.user.name }</p>
                                 </div>
-                                <p className="text-xl">{ post.title }</p>
+                                <p className="text-lg">{ post.title }</p>
                             </div>
                         </Link>
                     </div>

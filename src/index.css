@@ -3,9 +3,16 @@
 @tailwind utilities;
 
 * {
-    background-color: rgb(140, 241, 140);
-    color: black;
+    /* background-color: rgb(140, 241, 140); */
+    color: white;
     box-sizing: border-box;
     font-family: 'Arial', sans-serif;
     background-size: 100%;
+}
+
+body {
+    background-image: url(/public/champions.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: none;
 }

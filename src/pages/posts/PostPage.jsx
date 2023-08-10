@@ -85,7 +85,7 @@ export function PostPage() {
     
     function findComments(com){
         if(com.post.id == id){
-            return com.content;
+            return "@" + com.user.name + " - " + com.content;
         }
     }
     
@@ -118,7 +118,7 @@ export function PostPage() {
     return (
         <section className="flex flex-col m-2">
             <div className="self-center flex flex-col m-2">
-                <div className="self-center flex m-2 w-96 ">
+                <div className="self-center flex m-2 w-[30rem] ">
                     <form onSubmit={createLike}>
                         <button className="mx-3 mt-10" onClick={createLike}>{like ? <ThumbsDown></ThumbsDown> : <ThumbsUp></ThumbsUp>}</button>
                     </form>
@@ -134,11 +134,11 @@ export function PostPage() {
                     </div>
                 </div>
 
-                <div className="m-4 w-96 text-justify text-xl">
+                <div className="m-4 w-[40rem] text-justify text-xl">
                     <p>{ post.content }</p>
                 </div>
 
-                <table className="mx-4 my-2 border-t border-green-800 border-opacity-30 w-96">
+                <table className="mx-4 my-2 border-t border-green-800 border-opacity-30 w-[40rem]">
                     <tbody>
                         <tr>
                             <td className="text-lg">Comments:</td>
@@ -152,9 +152,9 @@ export function PostPage() {
                 </table>
 
                 <div className="mx-4">
-                    <h1 className="text-base">write a comment:</h1>
+                    <h1 className="text-base">Write a comment:</h1>
                     <form onSubmit={createComment} className="flex flex-col">
-                        <textarea type="text" value={createcomment.content} onChange={(e) => handleChangeComment("content", e.target.value)} className="border-solid border-green-800 border w-96 h-24 text-lg" maxLength={200}></textarea>
+                        <textarea type="text" value={createcomment.content} onChange={(e) => handleChangeComment("content", e.target.value)} className="border-solid border-green-800 border w-[40rem] h-24 text-lg" maxLength={200}></textarea>
                         <button type="submit" className="px-4 py-0.5 rounded bg-white text-xl w-20 my-2">reply</button>
                     </form>
                 </div>
