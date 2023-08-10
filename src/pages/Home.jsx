@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useUserContext } from "../utils/UserContext";
 import { api } from "../utils/api";
 import { Post } from "./posts/Post";
 
 export function Home(){
     const [categories, setCategories] = useState([]);
     const [valor, setValor] = useState("all");
+    const { user } = useUserContext();
 
     useEffect(() => {
         api.get("categories/index")
@@ -32,7 +34,7 @@ export function Home(){
                     </select>
                 </div>
                 <div className="self-center m-5 text-2xl">
-                    <Link to="/createpost" className="px-5 py-1.5 mx-5 rounded-xl text-black bg-gray-100 text-2xl">POST</Link>
+                    {user ? <Link to="/createpost" className="px-5 py-1.5 mx-5 rounded-xl text-black bg-gray-100 text-2xl">POST</Link> : <></>}
                 </div>
             </div>
 
