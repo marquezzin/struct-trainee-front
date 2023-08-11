@@ -64,16 +64,16 @@ export function CreatePost(){
             </div>
 
             <div className="self-center w-96 mb-4">
-                <h1 className="text-xl">Title:</h1>
+                <h1 className="text-xl"><span style={{ textDecoration: "underline" }}>TITLE:</span></h1>
                 <form>
-                    <textarea value={formData.title} onChange={handleTitleChange} type="text" className="border-solid border-white border w-96 h-24 text-lg" maxLength={130}></textarea>
+                    <textarea value={formData.title} onChange={handleTitleChange} type="text" className="border-solid border-black border-2 w-96 h-24 text-lg text-black" maxLength={130}></textarea>
                 </form>
             </div>
 
             <div className="self-center w-96 mb-4">
-                <h1 className="text-xl">Content:</h1>
+                <h1 className="text-xl"><span style={{ textDecoration: "underline" }}>CONTENT:</span> </h1>
                 <form>
-                    <textarea value={formData.content} onChange={handleContentChange} type="text" className="border-solid border-white border w-96 h-80" maxLength={600}></textarea>
+                    <textarea value={formData.content} onChange={handleContentChange} type="text" className="border-solid  border-black border-2 w-96 h-80 text-black" maxLength={600}></textarea>
                 </form>
             </div>
 

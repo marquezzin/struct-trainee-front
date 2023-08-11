@@ -14,7 +14,7 @@ export function PostPage() {
         // post_id: undefined,
     });
     const [createcomment, setCreatecomment] = useState([]);
-    
+
     useEffect(() => {
         api.get(`posts/show/${id}`)
         .then((res) => { setPost(res.data); })
@@ -82,13 +82,13 @@ export function PostPage() {
             return {...prevComment,[key]:value}
         })
     }
-    
+
     function findComments(com){
         if(com.post.id == id){
             return "@" + com.user.name + " - " + com.content;
         }
     }
-    
+
     let contUpv = 0
     function contUpvotes(upv){
         if(upv.post.id == id){
@@ -96,7 +96,7 @@ export function PostPage() {
         }
         return contUpv;
     }
-    
+
     let qntUpv = 0
     upvotes.map((upv) => (
         qntUpv = contUpvotes(upv)
@@ -154,8 +154,8 @@ export function PostPage() {
                 <div className="mx-4">
                     <h1 className="text-base">Write a comment:</h1>
                     <form onSubmit={createComment} className="flex flex-col">
-                        <textarea type="text" value={createcomment.content} onChange={(e) => handleChangeComment("content", e.target.value)} className="border-solid border-green-800 border w-[40rem] h-24 text-lg" maxLength={200}></textarea>
-                        <button type="submit" className="px-4 py-0.5 rounded bg-white text-xl w-20 my-2">reply</button>
+                        <textarea type="text" value={createcomment.content} onChange={(e) => handleChangeComment("content", e.target.value)} className="border-solid border-black border-2 w-[40rem] h-24 text-lg text-black" maxLength={200}></textarea>
+                        <button type="submit" className="px-4 py-0.5 rounded text-black bg-white text-xl w-20 my-2">reply</button>
                     </form>
                 </div>
             </div>

@@ -18,24 +18,24 @@ export function AdminIndexCategoriesPage() {
 
     return (
         <div className="flex flex-col">
-            <h1 className="mx-5 my-5 text-3xl self-center text-black">CATEGORIES:</h1>
+            <h1 className="mx-5 my-5 text-3xl self-center text-white">CATEGORIES:</h1>
             <div className="self-center">
                 <div className="max-w-md">
                     <table className="mx-5 border-collapse">
                         <thead className="text-left">
                             <tr className="text-xl ">
-                                <th className="p-2 border-black text-black">Id</th>
-                                <th className="p-2 border-black text-black">Name</th>
-                                <th className="p-2 border-black text-black">Actions</th>
+                                <th className="p-2 border-white text-white">Id</th>
+                                <th className="p-2 border-white text-white">Name</th>
+                                <th className="p-2 border-white text-white">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             {categories.map((cat) => (
                                 <tr key={cat.id} className="text-lg">
-                                    <td className="p-2 border border-black text-black">{cat.id}</td>
-                                    <td className="p-2 border border-black text-black">{cat.name}</td>
-                                    <td className="p-2 border border-black flex items-center space-x-2">
-                                        <Link to={`/categories/update/${cat.id}`} className="text-gray-800">EDIT</Link>
+                                    <td className="p-2 border border-white text-white">{cat.id}</td>
+                                    <td className="p-2 border border-white text-white">{cat.name}</td>
+                                    <td className="p-2 border border-white flex items-center space-x-2">
+                                        <Link to={`/categories/update/${cat.id}`} className="text-gray-500">EDIT</Link>
                                         <button className="text-red-500" onClick={() => {
                                             if (window.confirm(`Do you really want to delete the category: ${cat.name}?`)) {
                                                 api.delete(`categories/delete/${cat.id}`)
