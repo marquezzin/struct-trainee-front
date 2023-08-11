@@ -1,86 +1,84 @@
 import { default as React, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useUserContext } from "../../utils/UserContext";
 import { api } from "../../utils/api";
 const ThumbsUp = ({size=24, color="#FFFFFF"}) => (<svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>);
 const ThumbsDown = ({size=24, color="#FFFFFF"}) => (<svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3zm7-13h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17"></path></svg>);
 
 export function PostPage() {
+    const { user } = useUserContext()
     const { id } = useParams();
     const [post, setPost] = useState([]);
-    const [comments, setComments] = useState([]);
+
     const [upvotes, setUpvotes] = useState([]);
-    const [like, setLike] = useState({
+    const [createupvote, setCreateupvote] = useState({
         status: false,
-        // post_id: undefined,
     });
-    const [createcomment, setCreatecomment] = useState([]);
+    const [updatesupvotes, setUpdatesupvotes] = useState(0);
+
+    const [comments, setComments] = useState([]);
+    const [createcomment, setCreatecomment] = useState({
+        content: "",
+    });
+    const [updatescomments, setUpdatescomments] = useState(0);
+
+    function forceUpdateUpvotesIndex() {
+        setUpdatesupvotes(updatesupvotes + 1);
+    }
+
+    function forceUpdateCommentsIndex() {
+        setUpdatescomments(updatescomments + 1);
+    }
 
     useEffect(() => {
         api.get(`posts/show/${id}`)
         .then((res) => { setPost(res.data); })
-        .catch((err) => alert("Error fetching posts."));
-    }, []);
-
-    useEffect(() => {
-        api.get("comments/index")
-            .then((res) => { setComments(res.data); })
-            .catch((err) => alert("Error fetching categories."));
+        .catch((err) => alert("Error fetching posts: " + err.message));
     }, []);
 
     useEffect(() => {
         api.get("upvotes/index")
             .then((res) => { setUpvotes(res.data); })
-            .catch((err) => alert("Error fetching upvotes."));
-    }, []);
+            .catch((err) => alert("Error fetching upvotes: " + err.message));
+    }, [updatesupvotes]);
 
-    // function handleChangeLike(key,value){
-    //     setLike(({status: value}) => {status: !value});
-    // }
+    useEffect(() => {
+        api.get("comments/index")
+            .then((res) => { setComments(res.data); })
+            .catch((err) => alert("Error fetching categories: " + err.message));
+    }, [updatescomments]);
+    
+    function handleContentChange(event) {
+        setCreatecomment({ ...createcomment, content: event.target.value });
+    }
 
-    function createLike(e){
-        e.preventDefault();
-
-        api.post("upvotes/create", {
-            like: {status: true}
+    function handleSubmit(event) {
+        event.preventDefault();
+        api.post("comments/create", {
+            content: createcomment.content,
+            post_id: `${post.id}`,
+            user_id: `${user.id}`
         }).then(() => {
-            console.log(like)
-            alert("Liked!")
+            alert("Comment created successfully");
+            forceUpdateCommentsIndex();
         }).catch((err) => {
-            alert("Error liking.");
+            alert("Error creating comment: " + err.message);
         });
     }
 
-    function validateComment(comm){
-        if(!comm.content)
-            return{valid: false, message:"Comment can't be empty"}
-
-        return{valid: true,message:"Comment created!"}
-    }
-
-    function createComment(e){
-        e.preventDefault();
-
-        const { valid, message } = validateComment(createcomment);
-
-        if(valid) {
-            api.post("comments/create", {
-                createcomment,
-            }).then(() => {
-                console.log(createcomment)
-                alert("Comment created successfully");
-
-            }).catch((err) => {
-                alert("Error creating comment");
-            });
-        } else {
-            alert(message);
-        }
-    }
-
-    function handleChangeComment(key,value){
-        setCreatecomment((prevComment) => {
-            return {...prevComment,[key]:value}
-        })
+    function handleUpvote(event) {
+        event.preventDefault();
+        setCreateupvote({status: !createupvote.status})
+        api.post("upvotes/create", {
+            status: !createupvote.status,
+            post_id: `${post.id}`,
+            user_id: `${user.id}`
+        }).then(() => {
+            alert("Upvote created successfully");
+            forceUpdateUpvotesIndex();
+        }).catch((err) => {
+            alert("Error creating upvote: " + err.message);
+        });
     }
 
     function findComments(com){
@@ -119,8 +117,11 @@ export function PostPage() {
         <section className="flex flex-col m-2">
             <div className="self-center flex flex-col m-2">
                 <div className="self-center flex m-2 w-[30rem] ">
-                    <form onSubmit={createLike}>
-                        <button className="mx-3 mt-10" onClick={createLike}>{like ? <ThumbsDown></ThumbsDown> : <ThumbsUp></ThumbsUp>}</button>
+                    <form>
+                        {createupvote.status 
+                            ? <p className="mx-3 mt-10"><ThumbsDown></ThumbsDown></p> 
+                            : <button onClick={handleUpvote} className="mx-3 mt-10"><ThumbsUp></ThumbsUp></button> 
+                        }
                     </form>
 
                     <div className="flex flex-col">
@@ -153,9 +154,9 @@ export function PostPage() {
 
                 <div className="mx-4">
                     <h1 className="text-base">Write a comment:</h1>
-                    <form onSubmit={createComment} className="flex flex-col">
-                        <textarea type="text" value={createcomment.content} onChange={(e) => handleChangeComment("content", e.target.value)} className="border-solid border-gray-800 border-2 w-[40rem] h-24 text-lg text-black bg-gray-200" maxLength={200}></textarea>
-                        <button type="submit" className="px-4 py-0.5 rounded text-black bg-white text-xl w-20 my-2">reply</button>
+                    <form className="flex flex-col">
+                        <textarea value={createcomment.content} onChange={handleContentChange} type="text" className="border-solid border-gray-800 border-2 w-[40rem] h-24 text-lg text-black bg-gray-200" maxLength={200}></textarea>
+                        <button onClick={handleSubmit} type="submit" className="px-4 py-0.5 rounded text-black bg-white text-xl w-20 my-2">reply</button>
                     </form>
                 </div>
             </div>
