@@ -1,10 +1,8 @@
 import Cookies from "js-cookie";
 import { createContext, useContext, useEffect, useState } from "react";
 import { api } from "../utils/api";
-import { useNavigate } from "react-router-dom";
 
 const userContext = createContext(null);
-const navigate = useNavigate()
 
  function handleSetDefaultHeaders(email, authentication_token){
      api.defaults.headers.common["X-User-Email"] = email
@@ -36,7 +34,6 @@ export const UserContextProvider = ({children}) => {
 
     async function logout(){
         alert("Loggin out...")
-        navigate("/")
         // Cookies.remove("email")
         // Cookies.remove("authentication_token")
         handleSetDefaultHeaders("", "");
