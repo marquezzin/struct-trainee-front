@@ -1,8 +1,8 @@
 import { default as React, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { api } from "../../utils/api";
-const ThumbsUp = ({size=24, color="#000000"}) => (<svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>);
-const ThumbsDown = ({size=24, color="#000000"}) => (<svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3zm7-13h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17"></path></svg>);
+const ThumbsUp = ({size=24, color="#FFFFFF"}) => (<svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>);
+const ThumbsDown = ({size=24, color="#FFFFFF"}) => (<svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3zm7-13h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17"></path></svg>);
 
 export function PostPage() {
     const { id } = useParams();
@@ -154,7 +154,7 @@ export function PostPage() {
                 <div className="mx-4">
                     <h1 className="text-base">Write a comment:</h1>
                     <form onSubmit={createComment} className="flex flex-col">
-                        <textarea type="text" value={createcomment.content} onChange={(e) => handleChangeComment("content", e.target.value)} className="border-solid border-black border-2 w-[40rem] h-24 text-lg text-black" maxLength={200}></textarea>
+                        <textarea type="text" value={createcomment.content} onChange={(e) => handleChangeComment("content", e.target.value)} className="border-solid border-black border-2 w-[40rem] h-24 text-lg text-black bg-gray-200" maxLength={200}></textarea>
                         <button type="submit" className="px-4 py-0.5 rounded text-black bg-white text-xl w-20 my-2">reply</button>
                     </form>
                 </div>
