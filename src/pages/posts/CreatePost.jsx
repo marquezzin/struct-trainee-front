@@ -32,7 +32,7 @@ export function CreatePost(){
                 title: formData.title,
                 content: formData.content,
                 category_id: formData.categoryId,
-                user_id: user.id
+                user_id: `${user.id}`
             })
         })
         .then(() => {
@@ -57,28 +57,28 @@ export function CreatePost(){
             <div className="self-center mt-10 mb-2 text-2xl">
                 <select className="px-5 py-1.5 mx-5 bg-gray-100 text-black rounded-xl" value={formData.categoryId}
                 onChange={handleCategoryChange}>
-                <option value="" >Select a Category</option>
+                <option value="" className="text-black">Select a Category</option>
                     {categories.map((cat) => (
                         <option className="text-black" key={cat.id} value={cat.id}>{cat.name}</option>
                     ))}
                 </select>
             </div>
 
-            <div className="self-center w-96 mb-4">
-                <h1 className="text-xl"><span style={{ textDecoration: "underline" }}>TITLE:</span></h1>
+            <div className="self-center w-96 mb-4 mt-2">
+                <h1 className="text-xl"><span>TITLE:</span></h1>
                 <form>
-                    <textarea value={formData.title} onChange={handleTitleChange} type="text" className="border-solid border-black border-2 w-96 h-24 text-lg text-black" maxLength={130}></textarea>
+                    <textarea value={formData.title} onChange={handleTitleChange} type="text" className="border-solid border-gray-800 border-2 w-96 h-24 text-lg text-black" maxLength={130}></textarea>
                 </form>
             </div>
 
-            <div className="self-center w-96 mb-4">
-                <h1 className="text-xl"><span style={{ textDecoration: "underline" }}>CONTENT:</span> </h1>
+            <div className="self-center w-96 mb-2">
+                <h1 className="text-xl"><span>CONTENT:</span> </h1>
                 <form>
-                    <textarea value={formData.content} onChange={handleContentChange} type="text" className="border-solid  border-black border-2 w-96 h-80 text-black" maxLength={600}></textarea>
+                    <textarea value={formData.content} onChange={handleContentChange} type="text" className="border-solid border-gray-800 border-2 w-96 h-80 text-lg text-black" maxLength={600}></textarea>
                 </form>
             </div>
 
-            <div className="self-center m-4">
+            <div className="self-center m-2">
                 <button onClick={handleSubmit} className="px-5 py-1.5 mx-5 rounded-xl text-black bg-gray-100 text-2xl">POST</button>
             </div>
         </section>
