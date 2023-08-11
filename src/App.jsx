@@ -1,34 +1,74 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { ErrorPage } from "./pages/ErrorPage.jsx";
+import { Home } from "./pages/Home.jsx";
+import { HomeAuth } from "./pages/HomeAuth.jsx";
+import { Root } from "./pages/Root.jsx";
+import { AdminCreateCategoriesPage } from "./pages/admin/categories/create.jsx";
+import { AdminEditCategoriesPage } from "./pages/admin/categories/edit.jsx";
+import { AdminIndexCategoriesPage } from "./pages/admin/categories/index.jsx";
+import { CreatePost } from "./pages/posts/CreatePost.jsx";
+import { PostPage } from "./pages/posts/PostPage.jsx";
+import { Dados } from "./pages/user/Dados.jsx";
+import { Login } from "./pages/user/Login.jsx";
+import { Signup } from "./pages/user/Singup.jsx";
+import { UserContextProvider } from "./utils/UserContext.jsx";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Root/>,
+    errorElement: <ErrorPage/>,
+    children: [
+      {
+        path: "/",
+        element: <Home/>
+      },
+      {
+        path:"/auth",
+        element: <HomeAuth/>
+      },
+      {
+        path: "user/dados",
+        element: <Dados/>
+      },
+      {
+        path: "/user/login",
+        element: <Login/>
+      },
+      {
+        path: "/user/signup",
+        element: <Signup/>
+      },
+      {
+        path: "createpost",
+        element: <CreatePost/>,
+      },
+      {
+        path: "categories",
+        element: <AdminIndexCategoriesPage/>,
+      },
+      {
+        path: "categories/create",
+        element: <AdminCreateCategoriesPage/>,
+      },
+      {
+        path: "categories/update/:id",
+        element: <AdminEditCategoriesPage/>,
+      },
+      {
+        path: "post/:id",
+        element: <PostPage/>
+      },
+    ]
+  },
+])
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <UserContextProvider>
+      <RouterProvider router={router}/>
+    </UserContextProvider>
   )
 }
 
