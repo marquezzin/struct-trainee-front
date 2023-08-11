@@ -29,7 +29,7 @@ export function Home(){
                     <select id="select" className="px-5 py-1.5 mx-5 bg-gray-100 text-black rounded-xl">
                         <option  className="text-black" value="all">Todas as Ligas</option>
                         {categories.map((cat) => (
-                            <option className="text-black" value={cat.id}>{cat.name}</option>
+                            <option className="text-black" key={cat.id} value={cat.id}>{cat.name}</option>
                         ))}
                     </select>
                 </div>
