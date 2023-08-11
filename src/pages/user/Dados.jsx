@@ -17,7 +17,7 @@ export function Dados(){
                 <div className="self-center flex flex-col m-5">
                     <p className="self-center text-2xl w-96 text-justify m-2">bio: {user ? user.bio : "bio"}</p>
                     <div className="flex flex-col">
-                        <button onClick={logout} className="self-center px-4 py-1 m-4 rounded bg-white text-xl">LOGOUT</button>
+                        <button onClick={logout} className="self-center px-4 py-1 m-4 rounded text-black bg-white text-xl">LOGOUT</button>
                     </div>
                 </div>
         </section>

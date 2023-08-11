@@ -11,8 +11,19 @@
 }
 
 body {
-    background-image: url(/public/champions.png);
-    background-position: center;
+    background-image: url(/champions.png);
+    background-position: initial;
     background-size: cover;
     background-repeat: none;
 }
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+

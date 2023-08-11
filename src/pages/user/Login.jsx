@@ -6,14 +6,14 @@ export function Login() {
     const [password, setPassword] = useState("");
     const { user, login } = useUserContext();
     console.log(user)
-    
+
     const handlesubmit = (ev) => {
         ev.preventDefault()
         if(!email || !password){
             alert("preencha os campos")
             return
         }
-        
+
         login({ email, password}).catch((err) => {
             alert("Login error ");
         });
@@ -21,7 +21,7 @@ export function Login() {
 
     return (
         <section className="flex flex-col">
-            <h1 className="self-center m-6 text-2xl text-black" >WELCOME!</h1>
+            <h1 className="self-center m-6 text-2xl text-white" >WELCOME!</h1>
             <form className="flex flex-col items-center" onSubmit={handlesubmit}>
                 <input type="email" placeholder="email" value={email} onChange={(ev) => {
                     setEmail(ev.target.value);

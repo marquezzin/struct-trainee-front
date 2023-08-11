@@ -20,12 +20,17 @@ export function Post({ catId }) {
 
     function verifyPostcategories(catId, pcId, pc){
         if(catId == pcId){
+            console.log(pc)
             return (
                 <div className="self-center flex m-3" key={pc.post.id}>
                     <Link to={`/post/${pc.post.id}`}>
-                        <div className="flex flex-col border-b border-green-800 border-opacity-30">
-                            <p className="text-xl">{ pc.post.title }</p>
-                        </div>
+                    <div className="flex border-b border-green-800 border-opacity-30">
+                                <div className="self-center flex text-sm">
+                                    <p className="mx-3">
+                                    <span className="text-blue-300" style={{ fontSize: '2rem' }}>&#8226;</span>@{ pc.post.user.name }</p>
+                                </div>
+                                <p className="text-lg">{ pc.post.title }</p>
+                            </div>
                     </Link>
                 </div>
             )
@@ -40,7 +45,8 @@ export function Post({ catId }) {
                         <Link to={`/post/${post.id}`}>
                             <div className="flex border-b border-green-800 border-opacity-30">
                                 <div className="self-center flex text-sm">
-                                    <p className="mx-3">@{ post.user.name }</p>
+                                    <p className="mx-3">
+                                    <span className="text-blue-300" style={{ fontSize: '2rem' }}>&#8226;</span>@{ post.user.name }</p>
                                 </div>
                                 <p className="text-lg">{ post.title }</p>
                             </div>
@@ -51,10 +57,10 @@ export function Post({ catId }) {
         )
     } else {
         return (
-            <div className="flex flex-col m-2">
+            <div className="flex flex-col m-2"  >
                 {postcategories.map((pc) => (
                     verifyPostcategories(catId, pc.category.id, pc)
-                ))}     
+                ))}
             </div>
         )
     }
