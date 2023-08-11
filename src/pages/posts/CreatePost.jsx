@@ -12,6 +12,11 @@ export function CreatePost(){
         content: "",
         categoryId: "" // Categoria selecionada
     });
+
+    function handleCategoryChange(event) {
+        setFormData({ ...formData, categoryId: event.target.value });
+    }
+
     function handleTitleChange(event) {
         setFormData({ ...formData, title: event.target.value });
     }
@@ -20,9 +25,6 @@ export function CreatePost(){
         setFormData({ ...formData, content: event.target.value });
     }
 
-    function handleCategoryChange(event) {
-        setFormData({ ...formData, categoryId: event.target.value });
-    }
     function handleSubmit(event) {
         event.preventDefault();
         console.log(formData)
@@ -44,7 +46,6 @@ export function CreatePost(){
             alert("Error creating post");
         });
     }
-
 
     useEffect(() => {
         api.get("categories/index")
