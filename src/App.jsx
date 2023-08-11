@@ -23,6 +23,14 @@ const router = createBrowserRouter([
         element: <Home/>
       },
       {
+        path: "createpost",
+        element: <CreatePost/>,
+      },
+      {
+        path: "post/:id",
+        element: <PostPage/>
+      },
+      {
         path: "user/profile",
         element: <Profile/>
       },
@@ -35,10 +43,6 @@ const router = createBrowserRouter([
         element: <Signup/>
       },
       {
-        path: "createpost",
-        element: <CreatePost/>,
-      },
-      {
         path: "categories",
         element: <AdminIndexCategoriesPage/>,
       },
@@ -49,10 +53,6 @@ const router = createBrowserRouter([
       {
         path: "categories/update/:id",
         element: <AdminEditCategoriesPage/>,
-      },
-      {
-        path: "post/:id",
-        element: <PostPage/>
       },
     ]
   },
