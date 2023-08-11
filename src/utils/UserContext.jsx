@@ -1,8 +1,10 @@
 import Cookies from "js-cookie";
 import { createContext, useContext, useEffect, useState } from "react";
 import { api } from "../utils/api";
+import { useNavigate } from "react-router-dom";
 
 const userContext = createContext(null);
+const navigate = useNavigate()
 
  function handleSetDefaultHeaders(email, authentication_token){
      api.defaults.headers.common["X-User-Email"] = email
@@ -14,13 +16,17 @@ export const UserContextProvider = ({children}) => {
 
     async function login({ email, password }){
         return api.post("users/login",{email,password}).then((res)=>{
+
             // console.log(res.data)
             setUser(res.data)
             handleSetDefaultHeaders(res.data.email, res.data.authentication_token);
                 if (res.data.is_admin) {
+
                     alert("Successfully logged in as admin");
                 } else {
+
                     alert("Successfully logged in");
+
                 }
 
                 // Cookies.set("email", res.data.email)
@@ -30,6 +36,7 @@ export const UserContextProvider = ({children}) => {
 
     async function logout(){
         alert("Loggin out...")
+        navigate("/")
         // Cookies.remove("email")
         // Cookies.remove("authentication_token")
         handleSetDefaultHeaders("", "");
