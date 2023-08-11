@@ -52,6 +52,7 @@ export function AdminIndexCategoriesPage() {
                         </tbody>
                     </table>
                 </div>
+                
                 <div className="flex flex-col justify-center">
                     <Link className="bg-white text-black text-xl rounded-xl px-4 py-1 m-5 self-center" to="/categories/create">Create new</Link>
                 </div>

@@ -4,7 +4,7 @@ import { useUserContext } from "../../utils/UserContext";
 import { api } from "../../utils/api";
 
 export function CreatePost(){
-    const {user} = useUserContext()
+    const { user } = useUserContext()
     const navigate=useNavigate()
     const [categories, setCategories] = useState([]);
     const [formData, setFormData] = useState({
@@ -40,8 +40,6 @@ export function CreatePost(){
         .then(() => {
             alert("Post created successfully");
             navigate("/")
-
-            // Redirecionar ou realizar outras ações após a criação do post
         }).catch((err) => {
             alert("Error creating post");
         });

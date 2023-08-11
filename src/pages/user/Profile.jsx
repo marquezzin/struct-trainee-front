@@ -3,10 +3,8 @@ import { photo } from "../../utils/photo";
 
 export function Profile(){
     const { user } = useUserContext();
-    console.log(user)
 
     return(
-
         <section className="flex flex-col">
             <div className="self-center flex flex-col mt-5">
                     <img className="m-1 w-48 h-48" src={user && user.profile_picture_url ? photo.defaults.baseURL+user.profile_picture_url : "/vazio.png"}></img>
