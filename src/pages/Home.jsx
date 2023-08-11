@@ -12,7 +12,7 @@ export function Home(){
     useEffect(() => {
         api.get("categories/index")
             .then((res) => { setCategories(res.data); })
-            .catch((err) => alert("Error fetching categories."));
+            .catch((err) => alert("Error fetching categories: " + err.message));
     }, []);
 
     const select = document.getElementById('select');

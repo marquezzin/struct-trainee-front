@@ -42,7 +42,11 @@ export const UserContextProvider = ({children}) => {
     //     const authentication_token = Cookies.get("authentication_token")
     //     if(email && authentication_token){
     //         handleSetDefaultHeaders(email, authentication_token);
-    //         api.get("/users").then((res) => setUser(res.data));
+    //         api.get("/users/show", { params: {"user": {"email": email}}})
+    //             .then((res) => setUser(res.data))
+    //             .catch((err) => {
+    //                 alert("Error fetching user: " + err.message)
+    //             })
     //     }
     // }, [])
 
