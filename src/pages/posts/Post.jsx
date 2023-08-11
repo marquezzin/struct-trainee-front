@@ -20,7 +20,6 @@ export function Post({ catId }) {
 
     function verifyPostcategories(catId, pcId, pc){
         if(catId == pcId){
-            console.log(pc)
             return (
                 <div className="self-center flex m-3" key={pc.post.id}>
                     <Link to={`/post/${pc.post.id}`}>

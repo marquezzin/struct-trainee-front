@@ -27,8 +27,6 @@ export function CreatePost(){
 
     function handleSubmit(event) {
         event.preventDefault();
-        console.log(formData)
-        console.log(user)
         api.post("posts/create", {
             post:({
                 title: formData.title,
