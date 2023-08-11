@@ -138,7 +138,7 @@ export function PostPage() {
                     <p>{ post.content }</p>
                 </div>
 
-                <table className="mx-4 my-2 border-t border-green-800 border-opacity-30 w-[40rem]">
+                <table className="mx-4 my-2 border-t border-gray-200 border-opacity-30 w-[40rem]">
                     <tbody>
                         <tr>
                             <td className="text-lg">Comments:</td>

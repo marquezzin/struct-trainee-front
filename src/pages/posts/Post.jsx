@@ -23,7 +23,7 @@ export function Post({ catId }) {
             return (
                 <div className="self-center flex m-3" key={pc.post.id}>
                     <Link to={`/post/${pc.post.id}`}>
-                        <div className="flex flex-col border-b border-green-800 border-opacity-30">
+                        <div className="flex flex-col border-b border-gray-200 border-opacity-30">
                             <p className="text-xl">
                                <span className="text-blue-300" style={{ fontSize: '2rem' }}>&#8226;</span> { pc.post.title }</p>
                         </div>

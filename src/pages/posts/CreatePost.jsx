@@ -28,13 +28,14 @@ export function CreatePost(){
         console.log(formData)
         console.log(user)
         api.post("posts/create", {
-            params:{post:{
+            post:({
                 title: formData.title,
                 content: formData.content,
                 category_id: formData.categoryId,
                 user_id: user.id
-            }}
-        }).then(() => {
+            })
+        })
+        .then(() => {
             alert("Post created successfully");
             navigate("/")
 
