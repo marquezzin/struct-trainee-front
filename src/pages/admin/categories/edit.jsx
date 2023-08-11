@@ -52,19 +52,13 @@ export function AdminEditCategoriesPage() {
 
   return (
     <section className="flex flex-col">
-      <h1 className="self-center text-2xl m-5 text-black ">EDIT CATEGORY</h1>
+      <h1 className="self-center text-3xl m-7 text-white ">EDIT CATEGORY</h1>
       <form onSubmit={handleSubmit} className="flex flex-col self-center mx-5">
-        <div className="my-5 w-96 flex flex-col">
-          <label className="text-2xl self-center text-black" htmlFor="inp1">NAME:</label>
-          <input
-            type="text"
-            value={category.name}
-            onChange={(e) => handleChange("name", e.target.value)}
-            className="bg-white text-black rounded-2xl  border-black text-xl mx-2"
-            id="inp1"
-          />
+        <div className="my-2 w-96 flex flex-col">
+          <label className="text-2xl self-center text-white" htmlFor="inp1">NAME:</label>
+          <input type="text" value={category.name} onChange={(e) => handleChange("name", e.target.value)} className="bg-white text-black rounded border-black text-xl mx-2 px-3 py-1" id="inp1"/>
         </div>
-        <button className="bg-white text-black rounded-2xl text-xl px-4 py-1 self-center">UPDATE</button>
+        <button className="bg-white text-black rounded-xl text-xl px-4 py-1 self-center m-2">UPDATE</button>
       </form>
     </section>
   );

@@ -154,7 +154,7 @@ export function PostPage() {
                 <div className="mx-4">
                     <h1 className="text-base">Write a comment:</h1>
                     <form onSubmit={createComment} className="flex flex-col">
-                        <textarea type="text" value={createcomment.content} onChange={(e) => handleChangeComment("content", e.target.value)} className="border-solid border-black border-2 w-[40rem] h-24 text-lg text-black bg-gray-200" maxLength={200}></textarea>
+                        <textarea type="text" value={createcomment.content} onChange={(e) => handleChangeComment("content", e.target.value)} className="border-solid border-gray-800 border-2 w-[40rem] h-24 text-lg text-black bg-gray-200" maxLength={200}></textarea>
                         <button type="submit" className="px-4 py-0.5 rounded text-black bg-white text-xl w-20 my-2">reply</button>
                     </form>
                 </div>

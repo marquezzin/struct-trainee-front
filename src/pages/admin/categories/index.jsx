@@ -35,8 +35,8 @@ export function AdminIndexCategoriesPage() {
                                     <td className="p-2 border border-white text-white">{cat.id}</td>
                                     <td className="p-2 border border-white text-white">{cat.name}</td>
                                     <td className="p-2 border border-white flex items-center space-x-2">
-                                        <Link to={`/categories/update/${cat.id}`} className="text-gray-500">EDIT</Link>
-                                        <button className="text-red-500" onClick={() => {
+                                        <Link to={`/categories/update/${cat.id}`} className="text-yellow-400">EDIT</Link>
+                                        <button className="text-red-600" onClick={() => {
                                             if (window.confirm(`Do you really want to delete the category: ${cat.name}?`)) {
                                                 api.delete(`categories/delete/${cat.id}`)
                                                     .then(() => {

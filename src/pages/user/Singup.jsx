@@ -46,21 +46,14 @@ export function Signup() {
 
     return (
         <section className="flex flex-col">
-            <h1 className="self-center m-6 text-3xl text-black">CREATE ACCOUNT</h1>
+            <h1 className="self-center m-6 text-3xl text-white">CREATE ACCOUNT</h1>
             <form className="flex flex-col items-center" onSubmit={handleSubmit}>
-                <label htmlFor="username">Username:</label>
-                <input type="text"  placeholder="USERNAME" value={name} onChange={(e) => setName(e.target.value)} className="outline-none bg-white rounded my-1 px-1 text-black text-xl h-8 w-80"></input>
+                <input type="text" placeholder="username" value={name} onChange={(e) => setName(e.target.value)} className="outline-none bg-white rounded my-1 px-1 text-black text-xl h-8 w-80"></input>
+                <input type="email" placeholder="email" value={email} onChange={(e) => setEmail(e.target.value)} className="outline-none bg-white rounded my-1 px-1 text-black text-xl h-8 w-80"></input>
+                <input type="password" placeholder="password" value={password} onChange={(e) => setPassword(e.target.value)} className="outline-none bg-white rounded my-1 px-1 text-black text-xl h-8 w-80"></input>
+                <input type="password" placeholder="password confirmation" value={passwordConfirmation} onChange={(e) => setPasswordConfirmation(e.target.value)} className="outline-none bg-white rounded my-1 px-1 text-black text-xl h-8 w-80"></input>
 
-                <label htmlFor="email">Email:</label>
-                <input type="email"  placeholder="EMAIL" value={email} onChange={(e) => setEmail(e.target.value)} className="outline-none bg-white rounded my-1 px-1 text-black text-xl h-8 w-80"></input>
-
-                <label htmlFor="password">Password:</label>
-                <input type="password"  placeholder="PASSWORD" value={password} onChange={(e) => setPassword(e.target.value)}  className="outline-none bg-white rounded my-1 px-1 text-black text-xl h-8 w-80"></input>
-
-                <label htmlFor="passwordConfirmation">Password Confirmation:</label>
-                <input type="password"  placeholder="PASSWORD CONFIRMATION" value={passwordConfirmation} onChange={(e) => setPasswordConfirmation(e.target.value)}  className="outline-none bg-white rounded my-1 px-1 text-black text-xl h-8 w-80"></input>
-
-                <button type="submit" className="my-2 px-4 py-1  text-black rounded-2xl bg-white text-xl">SUBMIT</button>
+                <button type="submit" className="my-2 px-4 py-1  text-black rounded-xl bg-white text-xl">SUBMIT</button>
             </form>
         </section>
     );
